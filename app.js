@@ -23,6 +23,7 @@ function agregarAmigo(){
     console.log(amigos);
     //Agrego la 2da función al final de la 1ra para que dentro de la acción del botón se imprima la lista. 
     agregarAmigoImprimeLista();
+    return;
 }
 
 /*Crea una función que recorra el array amigos y agregue cada nombre como un elemento <li> dentro de una lista HTML. 
@@ -40,5 +41,26 @@ function agregarAmigoImprimeLista(){
         bullet.textContent = amigos[i];
         lista.appendChild(bullet);
         }
+    return;
 }
 
+/*Escribe una función que seleccione de manera aleatoria uno de los nombres almacenados en el array amigos. 
+Usa Math.random() y Math.floor() para obtener un índice aleatorio.*/
+function sortearAmigo(){
+//  1.Validar que haya amigos disponibles: Antes de sortear, comprobar si el array amigos no está vacío.
+    if (amigos.length === 0){
+        alert("Primero ingrese los nombres de sus amigos")
+        return;
+    }   else {
+//  2.Generar un índice aleatorio: Usar Math.random() y Math.floor() para seleccionar un índice aleatorio del arreglo.
+        let indiceAmigoSecreto = Math.floor(Math.random() * amigos.length + 1) - 1;
+        console.log(indiceAmigoSecreto);
+//  3.Obtener el nombre sorteado: Utilizar el índice aleatorio para acceder al nombre correspondiente en el arreglo.
+        let amigoSecreto = amigos[indiceAmigoSecreto];
+        console.log(amigoSecreto);
+//  4.Mostrar el resultado: Actualizar el contenido del elemento de resultado utilizando document.getElementById()  e innerHTML para mostrar el amigo sorteado.
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = amigoSecreto;
+        return resultado;
+    }
+}
